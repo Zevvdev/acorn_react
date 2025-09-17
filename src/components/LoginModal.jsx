@@ -37,7 +37,7 @@ function LoginModal() {
   const handleLogin = async()=>{ //이 함수는 즉시 리턴하는 함수가 아님을 async로 알려준다.
     try {
       // api 서버에 로그인 요청을 보내고 
-      const res = await api.post("/api/v1/login", state);
+      const res = await api.post("/v1/login", state);
       // userName과 password가 유효한 정보이면 정상 응답이 되고
       console.log(res.data);
       // 토큰을 localStorage에 저장한다
