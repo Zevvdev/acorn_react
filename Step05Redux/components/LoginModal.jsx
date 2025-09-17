@@ -44,7 +44,8 @@ function LoginModal() {
       console.log(res.data);
       // 토큰을 localStorage에 저장한다
       // 웹브라우저가 제공하는 자체 기능, 지우지 않는 이상 영구 저장된다.
-      localStorage.fakeToken = res.data;
+      // localStorage.fakeToken = res.data;
+      localStorage.token=res.data;
       // redux store에 로그인 정보 저장한다.
       const payload = {userName:state.userName, role:"ADMIN"};
       const action = {type:"USER_INFO", payload}; //payload:payload
