@@ -12,16 +12,30 @@
 import { createHashRouter } from "react-router-dom";
 import App from "../App";
 import Home from "../pages/Home";
+import ProtectedRoute from "../components/ProtectedRoute";
+import UserDetail from "../pages/UserDetail";
+import UserPwdUpdateForm from "../pages/UserPwdUpdateForm";
+import UserForm from "../pages/UserForm";
+import UserUpdateForm from "../pages/UserUpdateForm";
+import Board from "../pages/Board";
+import BoardForm from "../pages/BoardForm";
 
 //페이지 routing 정보를 배열에 미리 저장해둔다.
 const routes=[
      // spring boot 서버에 넣어서 실행하면 최초 로딩될때  /index.html 경로로 로딩된다.
     // 그럴때도  Home 컴포넌트가 활성화 될수 있도록 라우트 정보를 추가한다. 
     {path:"/index.html", element: <Home/>},
-    {path:"/", element:<Home/>}
+    {path:"/", element:<Home/>},
+    {path:"/user", element:<ProtectedRoute><UserDetail/></ProtectedRoute> },
+    {path:"/user/pwd-edit", element:<ProtectedRoute><UserPwdUpdateForm/></ProtectedRoute>},
+    {path:"/user/new", element:<UserForm/>},
+    {path:"/user/edit", element:<ProtectedRoute><UserUpdateForm/></ProtectedRoute>},
+    {path:"/board", element:<Board/>},
+    {path:"/board/new", element:<ProtectedRoute><BoardForm/></ProtectedRoute>}
+
 ];
 
-//export 해줄 router 객체를 만든다
+//export 해줄 router 객체를 만든다 `
 const router = createHashRouter([{
     path:"/",
     element:<App/>,

@@ -20,7 +20,8 @@ const initState={
   loginModal:{
     title:null,
     show:false
-  }
+  },
+  logoutTimer:null
 };
 
 // reducer 함수에서 사용할 handler object
@@ -36,6 +37,10 @@ const handlers = {
   USER_INFO:(state, action)=>({
     ...state,
     userInfo:action.payload
+  }),
+  LOGOUT_TIMER:(state, action)=>({
+    ...state,
+    logoutTimer:action.payload
   })
 };
 
@@ -50,6 +55,14 @@ const reducer = (state=initState, action)=>{
 
 // 위에서 만든 reducer 함수를 사용하는 redux store(중앙 저장소) 만들기
 const store = createStore(reducer);
+
+/*
+  개발환경에서는 <StrictMode> 에서 실행이 되는데
+  StrictMode는 동작을 엄격하게 검사하기 위해
+  Component가 2번씩 초기화된다.
+  결과적으로 useEffect() 함수가 두 번 호출된다.
+  개발이 끝난 후 실제 build 하면 Component는 1번씩만 초기화된다.
+*/
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
