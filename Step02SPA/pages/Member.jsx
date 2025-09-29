@@ -17,7 +17,7 @@ function Member() {
     totalPageCount:0
   });
 
-  //컴포넌트가 활성화될 떄 회원 목록 받아오기 + params 가 변경되었을 때
+  //컴포넌트가 활성화될 때 회원 목록 받아오기 + params 가 변경되었을 때
   useEffect(()=>{
     //params 정보 읽어온다
     const pageNum=params.get("pageNum"); //null일 수도
